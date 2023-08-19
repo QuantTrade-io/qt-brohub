@@ -23,7 +23,12 @@ class BrokerDeGiro(BrokerBase):
             password=password,
             int_account=self.int_account
         ))
-        trading_api.connect()
+    
+        try:
+            trading_api.connect()
+        except ConnectionError as e:
+            raise ConnectionError(f"Failed to authenticate with Degiro API: {e}")
+
         return trading_api
 
     def authenticate_with_username_password(self, **kwargs) -> None:

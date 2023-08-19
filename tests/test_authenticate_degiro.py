@@ -47,7 +47,8 @@ class TestAuthenticateDegiro(unittest.TestCase):
 
         assert (
             str(exc_info.value)
-            == "400 Client Error:  for url: https://trader.degiro.nl/login/secure/login"
+            == "Failed to authenticate with Degiro API: 400 Client Error:  for url:"
+            " https://trader.degiro.nl/login/secure/login"
         )
 
     def test_authenticate_degiro_without_email_password(self) -> None:
